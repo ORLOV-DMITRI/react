@@ -8,7 +8,7 @@ import styles from "./header.module.css";
 export const Header = () => {
   return (
     <Layout.Header className={styles.header}>
-      <Space>
+      <Space size="small">
         <TeamOutlined className={styles.teamIcon} />
         <Link to={PATH.home}>
           <PrimaryButton type="ghost">
