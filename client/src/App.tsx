@@ -29,7 +29,7 @@ function App() {
         algorithm: theme.darkAlgorithm,
       }}
     >
-      <RouterProvider router={router} />;
+      <RouterProvider router={router} />
     </ConfigProvider>
   );
 }

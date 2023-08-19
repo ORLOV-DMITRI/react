@@ -7,7 +7,9 @@ export const Layout: FC<LayoutProps> = ({ children }) => {
   return (
     <div className={style.main}>
       <Header />
-      <AntLayout style={{ height: "100%" }}>{children}</AntLayout>
+      <AntLayout style={{ height: "100%", backgroundColor: "transparent" }}>
+        {children}
+      </AntLayout>
     </div>
   );
 };
