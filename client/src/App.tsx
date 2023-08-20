@@ -1,12 +1,16 @@
 import { ConfigProvider, theme } from "antd";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { Login, Register } from "./pages";
+import { AddEmployee } from "./pages/add-employee/add-employee";
+import { Employees } from "./pages/employees/employees";
+import { Status } from "./pages/status/status";
 import { PATH } from "./route/path";
+import { Auth } from "./store/duck/auth/auth";
 
 const router = createBrowserRouter([
   {
     path: PATH.home,
-    element: <h1>home</h1>,
+    element: <Employees />,
   },
   {
     path: PATH.register,
@@ -17,8 +21,12 @@ const router = createBrowserRouter([
     element: <Login />,
   },
   {
-    path: PATH.login,
-    element: <h1>Login</h1>,
+    path: PATH.employeeAdd,
+    element: <AddEmployee />,
+  },
+  {
+    path: `${PATH.status}/:status`,
+    element: <Status />,
   },
 ]);
 
@@ -29,7 +37,9 @@ function App() {
         algorithm: theme.darkAlgorithm,
       }}
     >
-      <RouterProvider router={router} />
+      <Auth>
+        <RouterProvider router={router} />
+      </Auth>
     </ConfigProvider>
   );
 }

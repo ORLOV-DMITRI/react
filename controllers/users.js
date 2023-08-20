@@ -3,6 +3,11 @@ const jwt = require("jsonwebtoken");
 const { PrismaClient } = require("@prisma/client");
 const prisma = new PrismaClient();
 
+/**
+ * @route GET-/api/user/login
+ * @desc Регестраци
+ * @access Public
+ */
 const login = async (req, res) => {
   try {
     const { email, password } = req.body;
@@ -34,14 +39,12 @@ const login = async (req, res) => {
   } catch (error) {
     return res.status(400).json({ message: "Что то пошло не так" });
   }
-
-  /**
-   * @route POST-/api/user/register
-   * @desc Регестраци
-   * @access Public
-   */
 };
-
+/**
+ * @route POST-/api/user/register
+ * @desc Регестраци
+ * @access Public
+ */
 const registr = async (req, res) => {
   try {
     const { email, password, name } = req.body;

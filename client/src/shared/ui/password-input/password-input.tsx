@@ -27,10 +27,11 @@ export const PasswordInpit: FC<PasswordInputType> = ({
 
               return Promise.reject(new Error("Пароли должны совпадать"));
             } else {
-              if (value.lenght < 6) {
+              if (value.length < 6) {
+                console.log("тут");
                 return Promise.reject(new Error("Пароль меньше 6 символов"));
               }
-              //   return Promise.resolve();
+              return Promise.resolve();
             }
           },
         }),

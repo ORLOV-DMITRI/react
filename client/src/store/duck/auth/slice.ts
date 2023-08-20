@@ -1,6 +1,7 @@
 import { User } from "@prisma/client";
 import { createSlice } from "@reduxjs/toolkit";
 import { authApi } from "../../services/auth";
+import { RootState } from "../../store";
 
 type InitialState = {
   user: (User & { token: string }) | null;
@@ -39,3 +40,6 @@ export const authSlice = createSlice({
 
 export const actions = authSlice.actions;
 export default authSlice.reducer;
+
+export const selectIsAuth = (state: RootState) => state.auth.isAuthenticated;
+export const selectUser = (state: RootState) => state.auth.user;

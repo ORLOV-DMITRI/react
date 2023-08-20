@@ -1,6 +1,6 @@
 import { Card, Form, Row, Space, Typography } from "antd";
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { ErrorMessage } from "../../components/error-message/error-message";
 import { Layout } from "../../layout/layout";
 import { PATH } from "../../route/path";
@@ -11,6 +11,7 @@ import { useLoginMutation, UserData } from "../../store/services/auth";
 import { isErrorWithMessage } from "../../utils/is-error-with-message";
 
 export const Login = () => {
+  const navigate = useNavigate();
   const [loginUser, loginUserResult] = useLoginMutation();
 
   const [error, setError] = useState("");
@@ -18,6 +19,8 @@ export const Login = () => {
   const onLogin = async (data: UserData) => {
     try {
       await loginUser(data).unwrap();
+
+      navigate("/");
     } catch (error) {
       const hasError = isErrorWithMessage(error);
 
