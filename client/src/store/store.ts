@@ -1,7 +1,12 @@
-import { configureStore, ThunkAction, Action } from "@reduxjs/toolkit";
+import { configureStore } from "@reduxjs/toolkit";
+import auth from "./duck/auth/slice";
+import { api } from "./services/api";
 
 export const store = configureStore({
-  reducer: {},
+  reducer: {
+    [api.reducerPath]: api.reducer,
+    auth,
+  },
 });
 
 export type AppDispatch = typeof store.dispatch;
